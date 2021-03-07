@@ -1,0 +1,43 @@
+---
+- name: Setup jail for borg backup
+  hosts: localhost
+  connection: local
+  pre_tasks:
+    - name: Include vars
+      include_vars: "{{ item }}"
+      with_first_found:
+        - "../vars.yml"
+        - "../default.vars.yml"
+        - "default.vars.yml"
+  tasks:
+    - name: Ensure required dependencies exist
+      package:
+        name:
+          - sudo
+          - bash
+        state: present
+
+    - name: Ensure sshd is started and enabled
+      service:
+        state: started
+        name: sshd
+        enabled: yes
+
+    - name: "Setup borg user {{ borg_user }}"
+      user:
+        name: "{{ borg_user }}"
+        password: "{{ borg_user_password | password_hash('sha512', borg_user_salt) }}"
+        shell: "{{ borg_user_shell }}"
+        groups:
+          - wheel
+        update_password: always
+        state: present
+      when: borg_user_password is defined and borg_user_salt is defined
+
+    - name: Ensure borg user can sudo without password
+      copy:
+        dest: "/usr/local/etc/sudoers.d/{{ borg_user }}"
+        owner: root
+        group: wheel
+        mode: "0644"
+        content: "{{ borg_user }} ALL=(ALL) NOPASSWD: ALL"

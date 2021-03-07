@@ -1,0 +1,5 @@
+---
+borg_user: borg
+borg_user_password: borg # CHANGE ME
+borg_user_salt: borg # CHANGE ME
+borg_user_shell: /usr/local/bin/bash

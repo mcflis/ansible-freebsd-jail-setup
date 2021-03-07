@@ -1,0 +1,17 @@
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+indent_size = 4
+indent_style = space
+insert_final_newline = true
+max_line_length = 120
+tab_width = 4
+
+[{*.bash, *.bats, *.dash, *.ksh, *.mksh, *.sh, *.zsh, .bash_aliases, .bash_logout, .bash_profile, .bashrc, .profile, docker-volume}]
+indent_size = 2
+tab_width = 2
+
+[{*.yaml, *.yaml.j2, *.yml, *.yml.j2, *playbook.yaml, *playbook.yml, main.yaml, main.yml}]
+indent_size = 2
