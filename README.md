@@ -1,4 +1,4 @@
-# ansible-borg-backup-jail-setup
+# ansible-freebsd-jail-setup
 
 A repo for setting up a TrueNAS jail for running borg backup as client.
 
