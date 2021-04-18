@@ -1,5 +1,5 @@
 ---
-borg_user: borg
-borg_user_password: borg # CHANGE ME
-borg_user_salt: borg # CHANGE ME
-borg_user_shell: /usr/local/bin/bash
+admin_user: admin
+admin_user_password: admin # CHANGE ME
+admin_user_salt: admin # CHANGE ME
+admin_user_shell: /usr/local/bin/bash

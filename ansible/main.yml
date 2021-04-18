@@ -1,5 +1,5 @@
 ---
-- name: Setup jail for borg backup
+- name: Setup Ansible in jail
   hosts: localhost
   connection: local
   pre_tasks:
@@ -23,21 +23,21 @@
         name: sshd
         enabled: yes
 
-    - name: "Setup borg user {{ borg_user }}"
+    - name: "Setup admin user {{ admin_user }}"
       user:
-        name: "{{ borg_user }}"
-        password: "{{ borg_user_password | password_hash('sha512', borg_user_salt) }}"
-        shell: "{{ borg_user_shell }}"
+        name: "{{ admin_user }}"
+        password: "{{ admin_user_password | password_hash('sha512', admin_user_salt) }}"
+        shell: "{{ admin_user_shell }}"
         groups:
           - wheel
         update_password: always
         state: present
-      when: borg_user_password is defined and borg_user_salt is defined
+      when: admin_user_password is defined and admin_user_salt is defined
 
-    - name: Ensure borg user can sudo without password
+    - name: Ensure admin user can sudo without password
       copy:
-        dest: "/usr/local/etc/sudoers.d/{{ borg_user }}"
+        dest: "/usr/local/etc/sudoers.d/{{ admin_user }}"
         owner: root
         group: wheel
         mode: "0644"
-        content: "{{ borg_user }} ALL=(ALL) NOPASSWD: ALL"
+        content: "{{ admin_user }} ALL=(ALL) NOPASSWD: ALL"
