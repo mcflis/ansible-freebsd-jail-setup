@@ -3,7 +3,7 @@
 set -e
 
 VERSION=${VERSION-main}
-REPO_URL="https://github.com/mcflis/ansible-borg-backup-jail-setup/archive/$VERSION.zip"
+REPO_URL="https://github.com/mcflis/ansible-freebsd-jail-setup/archive/$VERSION.zip"
 
 echo "[Stage] bootstrap"
 env ASSUME_ALWAYS_YES=YES pkg bootstrap

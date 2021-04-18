@@ -12,7 +12,7 @@ One-shot command to install curl and (because it is not provided by default) and
 sh -c "env ASSUME_ALWAYS_YES=YES pkg bootstrap && \
        pkg update && \
        pkg install -y curl && \
-       curl -Lo- https://raw.githubusercontent.com/mcflis/ansible-borg-backup-jail-setup/feature/initial-iteration/install.sh | sh"
+       curl -Lo- https://raw.githubusercontent.com/mcflis/ansible-freebsd-jail-setup/main/install.sh | sh"
 ```
 
 ## Resources:
