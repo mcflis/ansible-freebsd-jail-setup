@@ -12,7 +12,7 @@ echo ""
 echo ""
 echo "[Stage] ansible-dependencies"
 pkg update
-pkg install -y py38-ansible
+pkg install -y python py38-ansible
 echo ""
 
 echo ""
